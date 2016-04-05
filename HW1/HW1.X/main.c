@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 #include<xc.h>           // processor SFR definitions
 #include<sys/attribs.h>  // __ISR macro
 
 // DEVCFG0
+<<<<<<< HEAD
 #pragma config DEBUG = OFF // no debugging
 #pragma config JTAGEN = OFF // no jtag
 #pragma config ICESEL = ICS_PGx1 // use PGED1 and PGEC1
@@ -12,6 +16,17 @@
 
 // DEVCFG1
 #pragma config FNOSC = PRIPLL // use primary oscillator with pll
+=======
+#pragma config DEBUG = x // no debugging
+#pragma config JTAGEN = x // no jtag
+#pragma config ICESEL = x // use PGED1 and PGEC1
+#pragma config PWP = x // no write protect
+#pragma config BWP = x // no boot write protect
+#pragma config CP = x // no code protect
+
+// DEVCFG1
+#pragma config FNOSC = x // use primary oscillator with pll
+>>>>>>> origin/master
 #pragma config FSOSCEN = x // turn off secondary oscillator
 #pragma config IESO = x // no switching clocks
 #pragma config POSCMOD = x // high speed crystal mode
@@ -64,4 +79,8 @@ int main() {
     }
     
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
