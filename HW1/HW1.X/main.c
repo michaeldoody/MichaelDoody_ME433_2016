@@ -11,15 +11,15 @@
 
 // DEVCFG1
 #pragma config FNOSC = PRIPLL // use primary oscillator with pll
-#pragma config DEBUG = OFF // no debugging
-#pragma config JTAGEN = OFF // no jtag
-#pragma config ICESEL = ICS_PGx1 // use PGED1 and PGEC1
-#pragma config PWP = OFF // no write protect
-#pragma config BWP = OFF // no boot write protect
-#pragma config CP = OFF // no code protect
+//#pragma config DEBUG = OFF // no debugging
+//#pragma config JTAGEN = OFF // no jtag
+//#pragma config ICESEL = ICS_PGx1 // use PGED1 and PGEC1
+//#pragma config PWP = OFF // no write protect
+//#pragma config BWP = OFF // no boot write protect
+//#pragma config CP = OFF // no code protect
 
 // DEVCFG1
-#pragma config FNOSC = PRIPLL // use primary oscillator with pll
+//#pragma config FNOSC = PRIPLL // use primary oscillator with pll
 #pragma config FSOSCEN = OFF // turn off secondary oscillator
 #pragma config IESO = OFF // no switching clocks
 #pragma config POSCMOD = HS // high speed crystal mode
@@ -70,3 +70,4 @@ int main() {
 	    // use _CP0_SET_COUNT(0) and _CP0_GET_COUNT() to test the PIC timing
 		// remember the core timer runs at half the CPU speed
     }
+}
