@@ -65,11 +65,16 @@ int main() {
     // do your TRIS and LAT commands here
     TRISBbits.TRISB4 = 1;
     TRISAbits.TRISA4 = 0;
-    LATAbits.LATA4 = 1;
+    LATAbits.LATA4 = 0;
     __builtin_enable_interrupts();
     
     while(1) {
 	    // use _CP0_SET_COUNT(0) and _CP0_GET_COUNT() to test the PIC timing
 		// remember the core timer runs at half the CPU speed
+        _CP0_SET_COUNT(0);
+        LATAbits.LATA4 = 1;
+        while(_CP0_GET_COUNTS() < 20000) {;}
+        LATAbits.LATA4 = 0;
+        while(_CP0_GET_COUNTS() < 20000) {;}
     }
 }
