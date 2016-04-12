@@ -71,10 +71,18 @@ int main() {
     while(1) {
 	    // use _CP0_SET_COUNT(0) and _CP0_GET_COUNT() to test the PIC timing
 		// remember the core timer runs at half the CPU speed
-        _CP0_SET_COUNT(0);
-        LATAbits.LATA4 = 1;
-        while(_CP0_GET_COUNTS() < 20000) {;}
-        LATAbits.LATA4 = 0;
-        while(_CP0_GET_COUNTS() < 20000) {;}
+    if (PORTBbits.RB4 == 0) 
+    {
+        ; // if pushbutton is pushed, wait until it is unpushed
+    }
+    else
+    {
+        LATAbits.LATA4 = 1; // turn LED on
+        _CP0_SET_COUNT(0);  // set timer count to 0
+        while(_CP0_GET_COUNT() < 12000) {;}
+        LATAbits.LATA4 = 0; // turn LED off after .5 ms
+        int count = _CP0_GET_COUNT();   // get current count
+        while(_CP0_GET_COUNT() < count + 12000) {;} //wait another .5 ms
+    }
     }
 }
