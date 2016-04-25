@@ -2,10 +2,10 @@
 // Demonstrates spi by accessing external ram
 // PIC is the master, ram is the slave
 // Uses microchip 23K256 ram chip (see the data sheet for protocol details)
-// SDO4 -> SI (pin F5 -> pin 5)
-// SDI4 -> SO (pin F4 -> pin 2)
-// SCK4 -> SCK (pin B14 -> pin 6)
-// SS4 -> CS (pin B8 -> pin 1)
+// SDO1 -> SI (pin B15 -> pin 26)
+// SDI1 -> SO (pin A1 -> pin 3)
+// SCK1 -> SCK (pin B14 -> pin 25)
+// SS1 -> CS (pin A0 -> pin 2)
 // Additional SRAM connections
 // Vss (Pin 4) -> ground
 // Vcc (Pin 8) -> 3.3 V
@@ -13,12 +13,12 @@
 // 
 // Only uses the SRAM's sequential mode
 //
-#define CS LATBbits.LATB8       // chip select pin
+#define CS LATAbits.LATA0       // chip select pin
 
 // send a byte via spi and return the response
-unsigned char spi_io(unsigned char o) {
-  SPI4BUF = o;
-  while(!SPI4STATbits.SPIRBF) { // wait to receive the byte
+char SPI1_IO(char write) {
+  SPI1BUF = o;
+  while(!SPI1STATbits.SPIRBF) { // wait to receive the byte
     ;
   }
   return SPI4BUF;
@@ -30,7 +30,7 @@ void ram_init() {
   // the chip select pin is used by the sram to indicate
   // when a command is beginning (clear CS to low) and when it
   // is ending (set CS high)
-  TRISBbits.TRISB8 = 0;
+  TRISAbits.TRISA0 = 0;
   CS = 1;
 
   // Master - SPI4, pins are: SDI4(F4), SDO4(F5), SCK4(F13).  
