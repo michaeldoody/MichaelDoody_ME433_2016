@@ -25,6 +25,9 @@ char SPI1_IO(char write) {
 }
 
 void initSPI1()
+{
+    RPA1Rbits.RPA1R = 0b0011;
+}
 
 void initI2C2()
 
